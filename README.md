@@ -8,7 +8,7 @@
 ### // ⚡ QUICK START (EXTRACTION)
 The core automation scripts and application files are bundled in the repository's main directory. To begin:
 
-1. **Download/Clone** the repository to your local machine (Fedora, Kali, or Windows).
+1. **Download/Clone** the repository to your local machine (Windows / Mac / Linus).
 2. **Locate the ZIP file** if you downloaded it as a bundle.
 3. **Extract All Content** to a dedicated folder. 
    > ⚠️ *Crucial: The installers (`.sh` / `.bat`) must remain in the same directory as the `src` folder to function.*
