@@ -48,7 +48,7 @@ The core automation scripts and application files are bundled within this reposi
 
 <br>
 
-// 🔑 SYSTEM REQUIREMENTS
+// 🔑 **SYSTEM REQUIREMENTS**
 
 <br>
 
