@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +63,7 @@ section{margin-bottom:52px;animation:rise .5s ease both;}
 .sh{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--cyan);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;}
 .sh::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--grn),transparent);}
 
-/* CODE & BOXES (Request: Blue Background + Green Bold Text) */
+/* CODE & BOXES */
 .cb, .arch, .notice, .os-block, .card {
   position:relative;
   background:var(--surf) !important;
@@ -75,7 +74,7 @@ section{margin-bottom:52px;animation:rise .5s ease both;}
 .cb{padding:16px 20px;overflow-x:auto;margin-bottom:10px;border-left:5px solid var(--cyan) !important;}
 pre{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--grn) !important;white-space:pre;}
 .ck{color:var(--cyan) !important;} 
-.cm{color:var(--cyan) !important; opacity:0.8;} /* Comments slightly transparent but still Cyan/Green */
+.cm{color:var(--cyan) !important; opacity:0.8;}
 
 /* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:2px;background:var(--grn);border:2px solid var(--grn);margin-bottom:10px;}
@@ -141,32 +140,45 @@ tr:hover td{background:var(--cyan-g);}
 </section>
 
 <section>
-  <div class="sh">// project structure</div>
-  <div class="cb">
-<pre>
-<span class="grn">StudyPlannerFX/</span>
-├── install-linux.sh             <span class="cm">← one-click installer — Linux</span>
-├── build-installer.sh           <span class="cm">← jpackage native installer builder</span>
-└── src/main/java/com/bracu/studyplanner/
-    ├── app/
-    │   ├── Launcher.java        <span class="cm">← true entry point</span>
-    │   └── StudyPlannerApp.java <span class="cm">← bootstraps Spring + JavaFX</span>
-    ├── service/
-    │   └── StudentService.java  <span class="cm">← main orchestrator</span>
-    └── view/
-        └── screens/             <span class="cm">← UI implementation</span>
-</pre>
-  </div>
-</section>
-
-<section>
   <div class="sh">// one-click installers</div>
   <div class="notice">
     <b>For non-terminal users —</b> Use the included scripts. Java and Maven will be installed automatically if missing.
   </div>
   <div class="os-grid">
     <div class="os-block">
-      <div class="os-name">🐧 Linux / Fedora / Kali</div>
+      <div class="os-name">🪟 Windows</div>
+      <div style="display:flex; align-items:flex-start; margin-bottom:12px;">
+        <div class="os-num">1</div>
+        <div style="margin-left:10px;">
+          <div class="os-lbl">Get the script</div>
+          <div class="os-note">File: <code>install-windows.bat</code></div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:flex-start;">
+        <div class="os-num">2</div>
+        <div style="margin-left:10px;">Run as Administrator ✓</div>
+      </div>
+    </div>
+    
+    <div class="os-block">
+      <div class="os-name">🍎 macOS</div>
+      <div style="display:flex; align-items:flex-start; margin-bottom:12px;">
+        <div class="os-num">1</div>
+        <div style="margin-left:10px;">
+          <div class="os-lbl">Get the script</div>
+          <div class="os-note">File: <code>install-macos.sh</code></div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:flex-start;">
+        <div class="os-num">2</div>
+        <div style="margin-left:10px;">
+          <div class="os-cmd">chmod +x install-macos.sh && ./install-macos.sh</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="os-block">
+      <div class="os-name">🐧 Linux / Debian / RPM</div>
       <div style="display:flex; align-items:flex-start; margin-bottom:12px;">
         <div class="os-num">1</div>
         <div style="margin-left:10px;">chmod +x install-linux.sh && ./install-linux.sh</div>
@@ -176,13 +188,25 @@ tr:hover td{background:var(--cyan-g);}
         <div style="margin-left:10px;">App launches automatically ✓</div>
       </div>
     </div>
-    <div class="os-block">
-      <div class="os-name">🪟 Windows</div>
-      <div style="display:flex; align-items:flex-start;">
-        <div class="os-num">1</div>
-        <div style="margin-left:10px;">Run install-windows.bat as Administrator</div>
-      </div>
-    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sh">// project structure</div>
+  <div class="cb">
+<pre>
+<span class="grn">StudyPlannerFX/</span>
+├── install-windows.bat          <span class="cm">← one-click installer — Windows</span>
+├── install-macos.sh             <span class="cm">← one-click installer — macOS</span>
+├── install-linux.sh             <span class="cm">← one-click installer — Linux</span>
+├── build-installer.sh           <span class="cm">← jpackage native installer builder</span>
+└── src/main/java/com/bracu/studyplanner/
+    ├── app/
+    │   ├── Launcher.java        <span class="cm">← true entry point</span>
+    │   └── StudyPlannerApp.java <span class="cm">← bootstraps Spring + JavaFX</span>
+    ├── service/
+    │   └── StudentService.java  <span class="cm">← main orchestrator</span>
+</pre>
   </div>
 </section>
 
@@ -194,4 +218,3 @@ tr:hover td{background:var(--cyan-g);}
 </div>
 </body>
 </html>
-```
