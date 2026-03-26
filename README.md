@@ -12,7 +12,7 @@ The core automation scripts and application files are bundled within this reposi
 
 <br>
 
-1. **Download/Clone** the repository to your local machine (Optimized for Fedora, Kali, and Windows environments).
+1. **Download / Clone** the repository to your local machine (Optimized for Fedora, Kali, and Windows environments).
 
 <br>
 
