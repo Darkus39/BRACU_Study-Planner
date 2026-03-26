@@ -49,6 +49,9 @@ The core automation scripts and application files are bundled within this reposi
 <br>
 
 // 🔑 SYSTEM REQUIREMENTS
+
+<br>
+
 Java Runtime: Version 21 (Automated detection and install included).
 
 Build Tool: Maven 3.9+ (Configured automatically via installation scripts).
