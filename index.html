@@ -8,49 +8,57 @@
 <style>
 :root{
   --bg:#050810;
-  --surf:#002b36; /* Your requested Blue Background */
-  --bdr:#0e1f3a;
+  --surf:#002b36; /* Request: Blue Background */
+  --bdr:#00ff9d;
   --cyan:#00C8FF;
-  --txt:#00ff9d; /* Your requested Green Text */
+  --txt:#00ff9d; /* Request: Green Text */
   --mut:#3d5470;
-  --wht:#00ff9d; /* Forced Green for emphasis */
+  --wht:#00ff9d;
   --grn:#00ff9d; 
   --org:#ffaa00;
+  --red:#ff4060;
 }
-
-/* Global Bold & Green */
+/* Request: All text Bold */
 *{margin:0;padding:0;box-sizing:border-box; font-weight: 800 !important;}
 body{background:var(--bg);color:var(--txt);font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.75;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.035) 2px,rgba(0,0,0,.035) 4px);}
 .wrap{max-width:900px;margin:0 auto;padding:60px 24px 100px;}
 
 /* HEADER */
 .hero{margin-bottom:56px;padding-left:22px;border-left:4px solid var(--grn);animation:rise .5s ease both;}
+.hero-tag{font-size:11px;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;}
 h1{font-family:'Syne',sans-serif;font-size:clamp(26px,5vw,46px);color:var(--grn);line-height:1.05;letter-spacing:-.02em;}
 h1 em{color:var(--cyan);font-style:normal;}
 .badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
 .badge{padding:3px 11px;border:1px solid var(--grn);background:var(--surf);font-size:11px;color:var(--grn);border-radius:2px;}
 
-/* SECTION HEADERS */
+/* SECTION */
+section{margin-bottom:52px;animation:rise .5s ease both;}
 .sh{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--cyan);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;}
 .sh::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--grn),transparent);}
 
-/* TABLES & CARDS (Blue BG + Green Text) */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:2px;background:var(--grn);}
-.card{background:var(--surf);padding:18px;color:var(--grn);}
-.card-title{font-size:13px;color:var(--grn);margin-bottom:5px;}
-.card-desc{font-size:11.5px;color:var(--grn);opacity:0.9;}
+/* CODE & ARCH BLOCKS */
+.cb, .arch{position:relative;background:var(--surf);border:2px solid var(--grn);padding:16px 20px;overflow-x:auto;margin-bottom:10px;}
+pre{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--grn);white-space:pre;}
+.cm{color:var(--cyan); opacity: 0.7;} /* Comments in Cyan for contrast */
 
+/* GRID & CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:2px;background:var(--grn);border:2px solid var(--grn);margin-bottom:10px;}
+.card{background:var(--surf);padding:18px;color:var(--grn);}
+.card-title{font-size:13px;color:var(--grn);margin-bottom:5px;text-transform: uppercase;}
+
+/* TABLES */
 table{width:100%;border-collapse:collapse;background:var(--surf);border:2px solid var(--grn);}
-th{text-align:left;color:var(--cyan);font-size:11px;padding:12px 14px;border:1px solid var(--grn);}
+th{text-align:left;color:var(--cyan);font-size:11px;padding:12px 14px;border:1px solid var(--grn);text-transform:uppercase;}
 td{padding:12px 14px;border:1px solid var(--grn);color:var(--grn);}
 
-/* CODE BLOCKS */
-.cb{background:var(--surf);border:2px solid var(--grn);padding:16px 20px;margin-bottom:10px;}
-pre{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--grn);white-space:pre;}
-.ck, .cv, .cs, .cg{color:var(--grn) !important;} 
-.cm{color:var(--cyan);} /* Comments in Cyan for some contrast */
+/* OS BLOCKS */
+.os-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;background:var(--grn);border:2px solid var(--grn);}
+.os-block{background:var(--surf);padding:20px 22px;color:var(--grn);}
+.os-name{font-size:12px;color:var(--cyan);border-bottom:1px solid var(--grn);margin-bottom:14px;padding-bottom:8px;}
+.os-num{border:1px solid var(--grn);color:var(--grn);width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:10px;margin-right:10px;}
 
-/* NOTICES */
+/* NOTICE */
 .notice{border:2px solid var(--grn);background:var(--surf);padding:11px 16px;color:var(--grn);margin-bottom:14px;}
 
 @keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
@@ -62,37 +70,85 @@ pre{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--grn);whi
 <div class="hero">
   <div class="hero-tag">// github.com/Darkus39/StudyPlannerFX</div>
   <h1>BRACU Study Planner <em>v2.0</em></h1>
-  <div class="hero-sub" style="color:var(--grn)">Academic management system for BRACU students</div>
+  <div class="hero-sub" style="color:var(--grn)">Academic management system for BRACU students — Java 21 · Spring Boot 3.2 · JavaFX 21</div>
   <div class="badges">
     <span class="badge">JAVA 21</span>
-    <span class="badge">SPRING BOOT 3.2</span>
-    <span class="badge">JAVAFX 21</span>
+    <span class="badge">SPRING BOOT 3.2.4</span>
+    <span class="badge">JAVAFX 21.0.2</span>
   </div>
 </div>
 
 <section>
+  <div class="sh">// what it does</div>
+  <div class="grid">
+    <div class="card"><div class="card-title">📊 Dashboard</div><div class="card-desc">Live CGPA tracker and semester overview.</div></div>
+    <div class="card"><div class="card-title">📚 Course Manager</div><div class="card-desc">Database of ~340 BRACU courses.</div></div>
+    <div class="card"><div class="card-title">🎯 CGPA Forecast</div><div class="card-desc">Target simulation to hit your goals.</div></div>
+    <div class="card"><div class="card-title">🌑 Dark UI</div><div class="card-desc">Custom JetBrains Mono theme.</div></div>
+  </div>
+</section>
+
+<section>
   <div class="sh">// what's new in v2.0</div>
   <table>
-    <thead><tr><th>Area</th><th>Now (v2)</th></tr></thead>
+    <thead><tr><th>Area</th><th>Before (v1)</th><th>Now (v2)</th></tr></thead>
     <tbody>
-      <tr><td>Architecture</td><td>Spring Boot + JavaFX — Full DI</td></tr>
-      <tr><td>UI</td><td>Cyber-Mecha Dark Theme</td></tr>
-      <tr><td>Persistence</td><td>Cross-platform JSON Storage</td></tr>
+      <tr><td>Architecture</td><td>Plain JavaFX MVC</td><td>Spring Boot + JavaFX — full DI</td></tr>
+      <tr><td>UI</td><td>Basic styling</td><td>Fully redesigned dark theme</td></tr>
+      <tr><td>Persistence</td><td>Working dir JSON</td><td>Documents/BRACUStudyPlanner/</td></tr>
+      <tr><td>Bug fix</td><td>Fedora Freeze</td><td>Fixed with Platform.runLater()</td></tr>
     </tbody>
   </table>
 </section>
 
 <section>
-  <div class="sh">// install — linux / kali / fedora</div>
-  <div class="cb"><pre>
-# One-click install for Darkus39
-chmod +x install-linux.sh
-./install-linux.sh
-  </pre></div>
+  <div class="sh">// project structure</div>
+  <div class="cb">
+<pre>
+<span class="grn">StudyPlannerFX/</span>
+├── install-linux.sh             <span class="cm">← one-click installer — Linux</span>
+├── build-installer.sh           <span class="cm">← jpackage native builder</span>
+└── src/main/java/com/bracu/studyplanner/
+    ├── app/
+    │   ├── Launcher.java        <span class="cm">← true entry point</span>
+    │   └── StudyPlannerApp.java <span class="cm">← bootstraps Spring + JavaFX</span>
+    ├── service/
+    │   └── StudentService.java  <span class="cm">← main orchestrator</span>
+    └── view/
+        └── screens/             <span class="cm">← UI implementation</span></pre>
+  </div>
 </section>
 
-<div class="footer" style="border-top:2px solid var(--grn); padding-top:20px; color:var(--grn);">
-  built by <b>Darkus39</b> · Spectre Flow
+<section>
+  <div class="sh">// one-click installers</div>
+  <div class="notice">
+    <b>For non-terminal users —</b> Use the included scripts. Java and Maven will be installed automatically if missing.
+  </div>
+  <div class="os-grid">
+    <div class="os-block">
+      <div class="os-name">🐧 Linux / Fedora / Kali</div>
+      <div style="display:flex; align-items:flex-start; margin-bottom:10px;">
+        <div class="os-num">1</div>
+        <div>chmod +x install-linux.sh && ./install-linux.sh</div>
+      </div>
+      <div style="display:flex; align-items:flex-start;">
+        <div class="os-num">2</div>
+        <div>App launches automatically ✓</div>
+      </div>
+    </div>
+    <div class="os-block">
+      <div class="os-name">🪟 Windows</div>
+      <div style="display:flex; align-items:flex-start;">
+        <div class="os-num">1</div>
+        <div>Run install-windows.bat as Administrator</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer" style="border-top:2px solid var(--grn); padding-top:20px; display:flex; justify-content:space-between;">
+  <div>built by <b>Darkus39</b> · Founder @ Spectre Flow</div>
+  <div>StudyPlannerFX v2.0</div>
 </div>
 
 </div>
