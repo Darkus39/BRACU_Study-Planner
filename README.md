@@ -52,11 +52,11 @@ The core automation scripts and application files are bundled within this reposi
 
 <br>
 
-Java Runtime: Version 21 (Automated detection and install included).
+**Java Runtime:** Version 21 (Automated detection and install included).
 
-Build Tool: Maven 3.9+ (Configured automatically via installation scripts).
+**Build Tool:** Maven 3.9+ (Configured automatically via installation scripts).
 
-Hardware: Compatible with x64 and ARM64 architectures.
+**Hardware:** Compatible with x64 and ARM64 architectures.
 
 <br>
 
