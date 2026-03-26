@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>BRACU Study Planner v2.0 — README</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050810;--surf:#090e1c;--bdr:#0e1f3a;
+  --cyan:#00C8FF;--cyan-g:rgba(0,200,255,.07);
+  --txt:#8aa0bb;--mut:#3d5470;--wht:#ddeaf8;
+  --grn:#00ff9d;--org:#ffaa00;--red:#ff4060;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--txt);font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.75;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.035) 2px,rgba(0,0,0,.035) 4px);}
+.wrap{max-width:900px;margin:0 auto;padding:60px 24px 100px;}
+
+/* HEADER */
+.hero{margin-bottom:56px;padding-left:22px;border-left:3px solid var(--cyan);animation:rise .5s ease both;}
+.hero-tag{font-size:11px;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;}
+h1{font-family:'Syne',sans-serif;font-size:clamp(26px,5vw,46px);font-weight:800;color:var(--wht);line-height:1.05;letter-spacing:-.02em;}
+h1 em{color:var(--cyan);font-style:normal;}
+.hero-sub{margin-top:10px;font-size:12px;color:var(--mut);}
+.badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
+.badge{padding:3px 11px;border:1px solid var(--bdr);background:var(--surf);font-size:11px;color:var(--mut);letter-spacing:.06em;border-radius:2px;}
+.badge b{color:var(--cyan);}
+
+/* SECTION */
+section{margin-bottom:52px;animation:rise .5s ease both;}
+.sh{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--cyan);font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+.sh::after{content:'';flex:1;height:1px;background:linear-gradient(to right,var(--bdr),transparent);}
+
+/* CODE */
+.cb{position:relative;background:var(--surf);border:1px solid var(--bdr);border-left:3px solid var(--cyan);padding:16px 20px;overflow-x:auto;margin-bottom:10px;}
+.cb-lang{position:absolute;top:7px;right:11px;font-size:10px;color:var(--mut);letter-spacing:.12em;text-transform:uppercase;}
+pre{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--wht);white-space:pre;}
+.ck{color:var(--cyan);} .cv{color:#f5c97a;} .cs{color:#82c99a;} .cm{color:var(--mut);} .cg{color:var(--grn);} .co{color:var(--org);}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1px;background:var(--bdr);border:1px solid var(--bdr);margin-bottom:10px;}
+.card{background:var(--surf);padding:18px;transition:background .2s;}
+.card:hover{background:var(--cyan-g);}
+.card-icon{font-size:18px;margin-bottom:8px;}
+.card-title{font-size:12px;font-weight:700;color:var(--wht);margin-bottom:5px;letter-spacing:.04em;}
+.card-desc{font-size:11.5px;color:var(--mut);line-height:1.55;}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{text-align:left;color:var(--cyan);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;border-bottom:1px solid var(--bdr);}
+td{padding:9px 14px;border-bottom:1px solid var(--bdr);color:var(--txt);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--cyan-g);}
+td:first-child{color:var(--wht);font-weight:600;}
+code{background:var(--bg);border:1px solid var(--bdr);padding:1px 6px;font-size:11.5px;color:var(--cyan);font-family:'JetBrains Mono',monospace;border-radius:1px;}
+
+/* ARCH */
+.arch{border:1px solid var(--bdr);}
+.arch-row{display:flex;border-bottom:1px solid var(--bdr);}
+.arch-row:last-child{border-bottom:none;}
+.arch-lbl{width:120px;flex-shrink:0;padding:11px 14px;font-size:10.5px;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;border-right:1px solid var(--bdr);display:flex;align-items:center;}
+.arch-items{display:flex;flex-wrap:wrap;gap:7px;padding:11px 14px;align-items:center;}
+.chip{padding:2px 9px;border:1px solid var(--bdr);font-size:11px;color:var(--txt);background:var(--bg);border-radius:2px;}
+.chip.hi{border-color:var(--cyan);color:var(--cyan);}
+
+/* OS BLOCKS */
+.os-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--bdr);border:1px solid var(--bdr);}
+.os-block{background:var(--surf);padding:20px 22px;}
+.os-block:hover{background:var(--cyan-g);}
+.os-name{font-size:11px;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--bdr);}
+.os-step{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start;}
+.os-num{width:20px;height:20px;border:1px solid var(--cyan);color:var(--cyan);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.os-lbl{font-size:12px;color:var(--wht);font-weight:600;margin-bottom:3px;}
+.os-cmd{font-size:11.5px;color:var(--grn);margin-bottom:2px;word-break:break-all;}
+.os-note{font-size:11px;color:var(--mut);}
+.os-dl{margin-top:14px;padding-top:12px;border-top:1px solid var(--bdr);}
+.os-dl-title{font-size:10.5px;color:var(--mut);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+
+/* NOTICE */
+.notice{border:1px solid var(--bdr);border-left:3px solid var(--org);background:var(--surf);padding:11px 16px;font-size:12px;color:var(--txt);margin-bottom:14px;}
+.notice b{color:var(--org);}
+.ng{border-left-color:var(--grn);}
+.ng b{color:var(--grn);}
+
+/* FOOTER */
+.footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-l{font-size:11px;color:var(--mut);}
+.footer-l b{color:var(--cyan);}
+.footer-r{font-size:11px;color:var(--mut);}
+
+@keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">// github.com/Darkus39/StudyPlannerFX</div>
+  <h1>BRACU Study Planner <em>v2.0</em></h1>
+  <div class="hero-sub">Academic management system for BRACU students — Java 21 · Spring Boot 3.2 · JavaFX 21</div>
+  <div class="badges">
+    <span class="badge"><b>Java</b> 21</span>
+    <span class="badge"><b>Spring Boot</b> 3.2.4</span>
+    <span class="badge"><b>JavaFX</b> 21.0.2</span>
+    <span class="badge"><b>Lombok</b> 1.18.38</span>
+    <span class="badge"><b>Gson</b> 2.10.1</span>
+    <span class="badge"><b>Platform</b> Win · Mac · Linux</span>
+  </div>
+</div>
+
+<!-- WHAT IT DOES -->
+<section>
+  <div class="sh">// what it does</div>
+  <div class="grid">
+    <div class="card"><div class="card-icon">📊</div><div class="card-title">Dashboard</div><div class="card-desc">Live CGPA tracker, semester overview, and progress stats at a glance.</div></div>
+    <div class="card"><div class="card-icon">📚</div><div class="card-title">Course Manager</div><div class="card-desc">Add, edit and track courses from a built-in BRACU database of ~340 courses.</div></div>
+    <div class="card"><div class="card-icon">🗓️</div><div class="card-title">Study Schedule</div><div class="card-desc">Auto-generated study schedules and topic roadmaps per course.</div></div>
+    <div class="card"><div class="card-icon">🎯</div><div class="card-title">CGPA Forecast</div><div class="card-desc">Target CGPA simulation — see exactly what grades you need to hit your goal.</div></div>
+    <div class="card"><div class="card-icon">💾</div><div class="card-title">Local Persistence</div><div class="card-desc">All data saved locally as JSON. Never leaves your device.</div></div>
+    <div class="card"><div class="card-icon">🌑</div><div class="card-title">Dark UI</div><div class="card-desc">Fully custom dark theme with Syne + JetBrains Mono typography.</div></div>
+  </div>
+</section>
+
+<!-- WHAT'S NEW -->
+<section>
+  <div class="sh">// what's new in v2.0</div>
+  <table>
+    <thead><tr><th>Area</th><th>Before (v1)</th><th>Now (v2)</th></tr></thead>
+    <tbody>
+      <tr><td>Architecture</td><td>Plain JavaFX MVC</td><td>Spring Boot + JavaFX — full DI, service layer</td></tr>
+      <tr><td>UI</td><td>Basic JavaFX styling</td><td>Fully redesigned dark theme</td></tr>
+      <tr><td>Persistence</td><td>Working dir JSON</td><td><code>Documents/BRACUStudyPlanner/</code> (cross-platform)</td></tr>
+      <tr><td>Distribution</td><td><code>mvn javafx:run</code> only</td><td>jpackage native installer (.exe / .dmg / .rpm / .deb)</td></tr>
+      <tr><td>Bug fix (Fedora 43)</td><td>Freeze on "Initialize Profile"</td><td>Fixed with <code>Platform.runLater()</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ARCHITECTURE -->
+<section>
+  <div class="sh">// architecture</div>
+  <div class="arch">
+    <div class="arch-row"><div class="arch-lbl">View</div><div class="arch-items"><span class="chip hi">SetupScreen</span><span class="chip hi">MainScreen</span><span class="chip">DashboardTab</span><span class="chip">CoursesTab</span><span class="chip">ScheduleTab</span><span class="chip">SettingsTab</span></div></div>
+    <div class="arch-row"><div class="arch-lbl">Services</div><div class="arch-items"><span class="chip hi">StudentService</span><span class="chip hi">CgpaService</span><span class="chip">CourseRepository</span><span class="chip">ScheduleService</span><span class="chip">PersistenceService</span></div></div>
+    <div class="arch-row"><div class="arch-lbl">Model</div><div class="arch-items"><span class="chip">Student</span><span class="chip">CourseEntry</span><span class="chip">SemesterInfo</span></div></div>
+    <div class="arch-row"><div class="arch-lbl">Core</div><div class="arch-items"><span class="chip hi">Spring Boot 3.2</span><span class="chip hi">JavaFX 21</span><span class="chip">Lombok</span><span class="chip">Gson</span></div></div>
+  </div>
+</section>
+
+<!-- ONE-CLICK INSTALLERS -->
+<section>
+  <div class="sh">// one-click installers</div>
+  <div class="notice">
+    <b>For non-terminal users —</b> Three scripts are included in the repo root. Download the one for your OS, place it in the <code>StudyPlannerFX/</code> folder, and run it. Java and Maven will be installed automatically if missing, then the app will launch.
+  </div>
+
+  <div class="os-grid">
+
+    <!-- WINDOWS -->
+    <div class="os-block">
+      <div class="os-name">🪟 Windows</div>
+      <div class="os-step"><div class="os-num">1</div><div><div class="os-lbl">Get the script</div><div class="os-note">File: <code>install-windows.bat</code> (in repo root)</div></div></div>
+      <div class="os-step"><div class="os-num">2</div><div><div class="os-lbl">Right-click → Run as Administrator</div><div class="os-note">Required for winget to install JDK/Maven if not present</div></div></div>
+      <div class="os-step"><div class="os-num">3</div><div><div class="os-lbl">App launches automatically ✓</div><div class="os-note">First run downloads Maven dependencies (~2 min)</div></div></div>
+      <div class="os-dl">
+        <div class="os-dl-title">Manual terminal commands</div>
+        <div class="cb" style="margin-bottom:0;"><pre><span class="cm">:: Install JDK 21</span>
+<span class="cg">winget install Microsoft.OpenJDK.21</span>
+
+<span class="cm">:: Install Maven</span>
+<span class="cg">winget install Apache.Maven</span>
+
+<span class="cm">:: Launch app</span>
+<span class="cg">cd StudyPlannerFX</span>
+<span class="cg">mvn javafx:run</span></pre></div>
+      </div>
+    </div>
+
+    <!-- MACOS -->
+    <div class="os-block">
+      <div class="os-name">🍎 macOS</div>
+      <div class="os-step"><div class="os-num">1</div><div><div class="os-lbl">Get the script</div><div class="os-note">File: <code>install-macos.sh</code> (in repo root)</div></div></div>
+      <div class="os-step"><div class="os-num">2</div><div>
+        <div class="os-lbl">Open Terminal, run:</div>
+        <div class="os-cmd">chmod +x install-macos.sh &amp;&amp; ./install-macos.sh</div>
+        <div class="os-note">Installs Homebrew, JDK 21, Maven if needed. Works on Intel &amp; Apple Silicon.</div>
+      </div></div>
+      <div class="os-step"><div class="os-num">3</div><div><div class="os-lbl">App launches automatically ✓</div></div></div>
+      <div class="os-dl">
+        <div class="os-dl-title">Manual terminal commands</div>
+        <div class="cb" style="margin-bottom:0;"><pre><span class="cm"># Install Homebrew (skip if present)</span>
+<span class="cg">/bin/bash -c "$(curl -fsSL \
+https://raw.githubusercontent.com/Homebrew\
+/install/HEAD/install.sh)"</span>
+
+<span class="cg">brew install --cask temurin@21</span>
+<span class="cg">brew install maven</span>
+<span class="cg">cd StudyPlannerFX &amp;&amp; mvn javafx:run</span></pre></div>
+      </div>
+    </div>
+
+    <!-- LINUX -->
+    <div class="os-block">
+      <div class="os-name">🐧 Linux</div>
+      <div class="os-step"><div class="os-num">1</div><div><div class="os-lbl">Get the script</div><div class="os-note">File: <code>install-linux.sh</code> (in repo root)</div></div></div>
+      <div class="os-step"><div class="os-num">2</div><div>
+        <div class="os-lbl">Open Terminal, run:</div>
+        <div class="os-cmd">chmod +x install-linux.sh &amp;&amp; ./install-linux.sh</div>
+        <div class="os-note">Auto-detects <b>apt</b> (Ubuntu/Debian) or <b>dnf</b> (Fedora/RHEL). Sudo required.</div>
+      </div></div>
+      <div class="os-step"><div class="os-num">3</div><div><div class="os-lbl">App launches automatically ✓</div></div></div>
+      <div class="os-dl">
+        <div class="os-dl-title">Manual — Ubuntu / Debian</div>
+        <div class="cb" style="margin-bottom:8px;"><pre><span class="cg">sudo apt update</span>
+<span class="cg">sudo apt install openjdk-21-jdk maven</span>
+<span class="cg">cd StudyPlannerFX &amp;&amp; mvn javafx:run</span></pre></div>
+        <div class="os-dl-title">Manual — Fedora / RHEL</div>
+        <div class="cb" style="margin-bottom:0;"><pre><span class="cg">sudo dnf install java-21-openjdk-devel maven</span>
+<span class="cg">cd StudyPlannerFX &amp;&amp; mvn javafx:run</span></pre></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DEV COMMANDS -->
+<section>
+  <div class="sh">// developer commands</div>
+  <div class="cb" data-lang="bash"><div class="cb-lang">bash</div>
+<pre><span class="cm"># Run in dev mode (fastest)</span>
+<span class="cg">mvn javafx:run</span>
+
+<span class="cm"># Build fat JAR then run</span>
+<span class="cg">mvn clean package</span>
+<span class="cg">java -jar target/StudyPlannerFX-2.0.0.jar</span>
+
+<span class="cm"># Build native installer — Linux / macOS</span>
+<span class="cg">chmod +x build-installer.sh &amp;&amp; ./build-installer.sh</span>
+
+<span class="cm"># Build native installer — Windows</span>
+<span class="cg">.\build-installer.bat</span></pre>
+  </div>
+</section>
+
+<!-- NATIVE INSTALLER -->
+<section>
+  <div class="sh">// native installer (no java required for end users)</div>
+  <p style="font-size:12.5px;color:var(--txt);margin-bottom:14px;">Use <code>build-installer.sh / .bat</code> to produce a platform-native package with a bundled JRE — end users don't need Java installed.</p>
+  <table>
+    <thead><tr><th>Platform</th><th>Output</th><th>Install</th></tr></thead>
+    <tbody>
+      <tr><td>Windows</td><td><code>.exe</code> installer</td><td>Double-click to install</td></tr>
+      <tr><td>macOS</td><td><code>.dmg</code> disk image</td><td>Open → drag to Applications</td></tr>
+      <tr><td>Fedora / RHEL</td><td><code>.rpm</code> package</td><td><code>sudo dnf install *.rpm</code></td></tr>
+      <tr><td>Ubuntu / Debian</td><td><code>.deb</code> package</td><td><code>sudo dpkg -i *.deb</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- DATA STORAGE -->
+<section>
+  <div class="sh">// data storage</div>
+  <div class="notice ng"><b>Privacy —</b> All student data is saved locally as human-readable JSON. Nothing is ever sent to any server.</div>
+  <table>
+    <thead><tr><th>OS</th><th>Location</th></tr></thead>
+    <tbody>
+      <tr><td>Windows</td><td><code>%USERPROFILE%\Documents\BRACUStudyPlanner\student_data.json</code></td></tr>
+      <tr><td>macOS</td><td><code>~/Documents/BRACUStudyPlanner/student_data.json</code></td></tr>
+      <tr><td>Linux</td><td><code>~/BRACUStudyPlanner/student_data.json</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PROJECT STRUCTURE -->
+<section>
+  <div class="sh">// project structure</div>
+  <div class="cb" data-lang="tree"><div class="cb-lang">tree</div>
+<pre><span class="ck">StudyPlannerFX/</span>
+├── <span class="co">install-windows.bat</span>          <span class="cm">← one-click installer — Windows</span>
+├── <span class="co">install-macos.sh</span>             <span class="cm">← one-click installer — macOS</span>
+├── <span class="co">install-linux.sh</span>             <span class="cm">← one-click installer — Linux</span>
+├── build-installer.sh / .bat    <span class="cm">← jpackage native installer builder</span>
+├── pom.xml
+└── src/main/java/com/bracu/studyplanner/
+    ├── app/
+    │   ├── <span class="ck">Launcher.java</span>            <span class="cm">← true entry point</span>
+    │   ├── <span class="ck">StudyPlannerApp.java</span>      <span class="cm">← bootstraps Spring + JavaFX</span>
+    │   └── SpringConfig.java
+    ├── model/
+    │   ├── Student.java
+    │   ├── CourseEntry.java
+    │   └── SemesterInfo.java
+    ├── service/
+    │   ├── <span class="ck">StudentService.java</span>       <span class="cm">← main orchestrator</span>
+    │   ├── CgpaService.java
+    │   ├── CourseRepository.java
+    │   ├── PersistenceService.java
+    │   └── ScheduleService.java
+    └── view/
+        ├── screens/
+        │   ├── SetupScreen.java
+        │   ├── MainScreen.java
+        │   └── tabs/
+        │       ├── DashboardTab.java
+        │       ├── CoursesTab.java
+        │       ├── ScheduleTab.java
+        │       └── SettingsTab.java
+        └── components/
+            ├── FormField.java
+            ├── StatCard.java
+            └── StatusBadge.java</pre>
+  </div>
+</section>
+
+<!-- BUG FIX -->
+<section>
+  <div class="sh">// bug fix — fedora 43 freeze</div>
+  <p style="font-size:12.5px;margin-bottom:14px;color:var(--txt);">On Linux/GTK JavaFX builds, swapping the scene root inside an active event dispatch caused the pulse scheduler to deadlock.</p>
+  <div class="cb" data-lang="java"><div class="cb-lang">java</div>
+<pre><span class="cm">// Before — causes freeze on Linux/GTK:</span>
+<span class="ck">onComplete</span>.run();
+
+<span class="cm">// After — deferred to next FX pulse, safe everywhere:</span>
+<span class="ck">Platform</span>.runLater(<span class="ck">onComplete</span>);</pre>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-l">built by <b>Darkus39</b> · Founder @ Spectre Flow · CSE Undergrad Y2</div>
+  <div class="footer-r">StudyPlannerFX v2.0 · Java 21 · Spring Boot 3.2 · JavaFX 21</div>
+</div>
+
+</div>
+</body>
+</html>
