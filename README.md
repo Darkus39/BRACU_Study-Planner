@@ -1,6 +1,6 @@
 # 🛰️ BRACU Study Planner v2.0
 
-> **[ 🖥️ CLICK HERE TO OPEN THE FULL INTERACTIVE README ](https://darkus39.github.io/BRACU_Study-Planner/)**
+> **[ 🖥️ CLICK HERE TO OPEN THE FULL INTERACTIVE README ](https://bracu-study-planner.vercel.app/)**
 >
 > *View the specialized Cyber-Mecha UI, installation guides, and architecture tree.*
 
