@@ -48,6 +48,15 @@ The core automation scripts and application files are bundled within this reposi
 
 <br>
 
+// 🔑 SYSTEM REQUIREMENTS
+Java Runtime: Version 21 (Automated detection and install included).
+
+Build Tool: Maven 3.9+ (Configured automatically via installation scripts).
+
+Hardware: Compatible with x64 and ARM64 architectures.
+
+<br>
+
 ### // 📂 REPOSITORY STRUCTURE
 
 <br>
@@ -60,9 +69,3 @@ StudyPlannerFX/
 ├── build-installer.sh    <-- Native Jpackage Builder
 └── src/                  <-- Source Code & Internal Assets
 
-// 🔑 SYSTEM REQUIREMENTS
-Java Runtime: Version 21 (Automated detection and install included).
-
-Build Tool: Maven 3.9+ (Configured automatically via installation scripts).
-
-Hardware: Compatible with x64 and ARM64 architectures.
