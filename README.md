@@ -1,74 +1,159 @@
-# 🛰️ BRACU Study Planner v2.0
+# 🎓 BRACU Study Planner v2.0
 
-> **[ 🖥️ CLICK HERE TO OPEN THE FULL INTERACTIVE README ](https://bracu-study-planner.vercel.app/)**
->
-> *View the specialized Cyber-Mecha UI, installation guides, and architecture tree.*
+> Academic management system for BRACU students — Java 21 · Spring Boot 3.2 · JavaFX 21
 
-<br>
+[![Java](https://img.shields.io/badge/Java-21-ED8B00?style=flat-square&logo=openjdk&logoColor=white)](https://openjdk.org/)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2.4-6DB33F?style=flat-square&logo=spring-boot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![JavaFX](https://img.shields.io/badge/JavaFX-21.0.2-007396?style=flat-square)](https://openjfx.io/)
+[![Platform](https://img.shields.io/badge/Platform-Win%20·%20Mac%20·%20Linux-555?style=flat-square)](https://github.com/Darkus39/BRACU_Study-Planner)
 
-### // ⚡ QUICK START & EXTRACTION
+---
 
-The core automation scripts and application files are bundled within this repository. To begin your setup:
+## What It Does
 
-<br>
+| Feature | Description |
+|---|---|
+| 📊 Dashboard | Live CGPA tracker, semester overview, and progress stats at a glance |
+| 📚 Course Manager | Add, edit, and track courses from a built-in BRACU database of ~340 courses |
+| 🗓️ Study Schedule | Auto-generated study schedules and topic roadmaps per course |
+| 🎯 CGPA Forecast | Target CGPA simulation — see exactly what grades you need to hit your goal |
+| 💾 Local Persistence | All data saved locally as JSON. Never leaves your device |
+| 🌑 Dark UI | Fully custom dark theme with Syne + JetBrains Mono typography |
 
-1. **Download / Clone** the repository to your local machine (Optimized for Fedora, Kali, and Windows environments).
+---
 
-<br>
+## One-Click Installers
 
-2. **Extract All Content:** If you downloaded the project as a `.zip` file, ensure you extract it to a dedicated folder rather than running files from within the archive.
+Download the repo, place the script in the `StudyPlannerFX/` folder, and run it. Java and Maven are installed automatically if missing.
 
-<br>
+### 🪟 Windows
+```bash
+# Right-click install-windows.bat → Run as Administrator
+# Required for winget to install JDK/Maven if not present
+```
 
-3. **Maintain Directory Integrity:** It is crucial that the installer scripts (`.sh` / `.bat`) remain in the same root directory as the `src/` folder. Moving scripts to the desktop individually will break the automated dependency paths.
+Manual:
+```bash
+winget install Microsoft.OpenJDK.21
+winget install Apache.Maven
+cd StudyPlannerFX && mvn javafx:run
+```
 
-<br>
+### 🍎 macOS
+```bash
+chmod +x install-macos.sh && ./install-macos.sh
+# Works on Intel & Apple Silicon. Installs Homebrew, JDK 21, Maven if needed.
+```
 
-4. **Execute Installer:** Run the script corresponding to your operating system. The automation layer will handle JDK 21 and Maven configuration if they are not detected on your system.
+Manual:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install --cask temurin@21
+brew install maven
+cd StudyPlannerFX && mvn javafx:run
+```
 
-<br>
+### 🐧 Linux
+```bash
+chmod +x install-linux.sh && ./install-linux.sh
+# Auto-detects apt (Ubuntu/Debian) or dnf (Fedora/RHEL). Sudo required.
+```
 
-### // 🛠️ CORE FEATURES
+Manual — Ubuntu/Debian:
+```bash
+sudo apt update && sudo apt install openjdk-21-jdk maven
+cd StudyPlannerFX && mvn javafx:run
+```
 
-<br>
+Manual — Fedora/RHEL:
+```bash
+sudo dnf install java-21-openjdk-devel maven
+cd StudyPlannerFX && mvn javafx:run
+```
 
-* **Dynamic Dashboard:** Real-time CGPA tracking and automated semester summaries with progress visualization.
+---
 
-<br>
+## Developer Commands
+```bash
+# Run in dev mode (fastest)
+mvn javafx:run
 
-* **Course Intelligence:** A pre-loaded database featuring ~340 BRACU courses for instant management and academic planning.
+# Build fat JAR then run
+mvn clean package
+java -jar target/StudyPlannerFX-2.0.0.jar
 
-<br>
+# Build native installer — Linux / macOS
+chmod +x build-installer.sh && ./build-installer.sh
 
-* **Agentic Scheduling:** Auto-generated study roadmaps and topic-wise schedules tailored to your course load.
+# Build native installer — Windows
+.\build-installer.bat
+```
 
-<br>
+---
 
-* **Linux Stability Fix:** Includes a specialized `Platform.runLater()` implementation to prevent UI deadlocks on Fedora 43/GTK environments.
+## Native Installer (No Java Required for End Users)
 
-<br>
+Use `build-installer.sh / .bat` to produce a platform-native package with a bundled JRE.
 
-### // 🔑 SYSTEM REQUIREMENTS
+| Platform | Output | Install |
+|---|---|---|
+| Windows | `.exe` installer | Double-click to install |
+| macOS | `.dmg` disk image | Open → drag to Applications |
+| Fedora / RHEL | `.rpm` package | `sudo dnf install *.rpm` |
+| Ubuntu / Debian | `.deb` package | `sudo dpkg -i *.deb` |
 
-<br>
+---
 
-**Java Runtime:** Version 21 (Automated detection and install included).
+## Data Storage
 
-**Build Tool:** Maven 3.9+ (Configured automatically via installation scripts).
+All student data is saved locally as human-readable JSON. Nothing is ever sent to any server.
 
-**Hardware:** Compatible with x64 and ARM64 architectures.
+| OS | Location |
+|---|---|
+| Windows | `%USERPROFILE%\Documents\BRACUStudyPlanner\student_data.json` |
+| macOS | `~/Documents/BRACUStudyPlanner/student_data.json` |
+| Linux | `~/BRACUStudyPlanner/student_data.json` |
 
-<br>
+---
 
-### // 📂 REPOSITORY STRUCTURE
-
-<br>
-
-```text
+## Project Structure
+```
 StudyPlannerFX/
-├── install-windows.bat   <-- Run as Administrator (Windows)
-├── install-linux.sh      <-- Run on Fedora/Kali (chmod +x)
-├── install-macos.sh      <-- Run on Apple Silicon/Intel
-├── build-installer.sh    <-- Native Jpackage Builder
-└── src/                  <-- Source Code & Internal Assets
+├── install-windows.bat
+├── install-macos.sh
+├── install-linux.sh
+├── build-installer.sh / .bat
+├── pom.xml
+└── src/main/java/com/bracu/studyplanner/
+    ├── app/
+    │   ├── Launcher.java
+    │   ├── StudyPlannerApp.java
+    │   └── SpringConfig.java
+    ├── model/
+    │   ├── Student.java
+    │   ├── CourseEntry.java
+    │   └── SemesterInfo.java
+    ├── service/
+    │   ├── StudentService.java
+    │   ├── CgpaService.java
+    │   ├── CourseRepository.java
+    │   ├── PersistenceService.java
+    │   └── ScheduleService.java
+    └── view/
+        ├── screens/
+        │   ├── SetupScreen.java
+        │   ├── MainScreen.java
+        │   └── tabs/
+        │       ├── DashboardTab.java
+        │       ├── CoursesTab.java
+        │       ├── ScheduleTab.java
+        │       └── SettingsTab.java
+        └── components/
+            ├── FormField.java
+            ├── StatCard.java
+            └── StatusBadge.java
+```
 
+---
+
+Built by [Ayanokouji](https://github.com/Darkus39) · Founder @ [Spectre Flow](https://spectre-flow-website.vercel.app) · CSE Undergrad Y2
