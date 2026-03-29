@@ -117,7 +117,7 @@ All student data is saved locally as human-readable JSON. Nothing is ever sent t
 ---
 
 ## Project Structure
-```
+
 StudyPlannerFX/
 ├── install-windows.bat
 ├── install-macos.sh
@@ -152,7 +152,7 @@ StudyPlannerFX/
             ├── FormField.java
             ├── StatCard.java
             └── StatusBadge.java
-```
+
 
 ---
 
