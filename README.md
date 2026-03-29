@@ -118,6 +118,7 @@ All student data is saved locally as human-readable JSON. Nothing is ever sent t
 
 ## Project Structure
 
+```
 StudyPlannerFX/
 ├── install-windows.bat
 ├── install-macos.sh
@@ -153,7 +154,7 @@ StudyPlannerFX/
             ├── StatCard.java
             └── StatusBadge.java
 
-
+```
 ---
 
 Built by [Ayanokouji](https://github.com/Darkus39) · Founder @ [Spectre Flow](https://spectre-flow-website.vercel.app) · CSE Undergrad Y2
