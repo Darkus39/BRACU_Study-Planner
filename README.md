@@ -1,3 +1,7 @@
+> **[🖥️ Prefer a visual README? Click here for the GUI version →](https://bracu-study-planner.vercel.app/)**
+
+---
+
 # 🎓 BRACU Study Planner v2.0
 
 > Academic management system for BRACU students — Java 21 · Spring Boot 3.2 · JavaFX 21
@@ -12,7 +16,7 @@
 ## What It Does
 
 | Feature | Description |
-|---|---|
+| --- | --- |
 | 📊 Dashboard | Live CGPA tracker, semester overview, and progress stats at a glance |
 | 📚 Course Manager | Add, edit, and track courses from a built-in BRACU database of ~340 courses |
 | 🗓️ Study Schedule | Auto-generated study schedules and topic roadmaps per course |
@@ -27,26 +31,26 @@
 Download the repo, place the script in the `StudyPlannerFX/` folder, and run it. Java and Maven are installed automatically if missing.
 
 ### 🪟 Windows
-```bash
+```
 # Right-click install-windows.bat → Run as Administrator
 # Required for winget to install JDK/Maven if not present
 ```
 
 Manual:
-```bash
+```
 winget install Microsoft.OpenJDK.21
 winget install Apache.Maven
 cd StudyPlannerFX && mvn javafx:run
 ```
 
 ### 🍎 macOS
-```bash
+```
 chmod +x install-macos.sh && ./install-macos.sh
 # Works on Intel & Apple Silicon. Installs Homebrew, JDK 21, Maven if needed.
 ```
 
 Manual:
-```bash
+```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install --cask temurin@21
 brew install maven
@@ -54,19 +58,19 @@ cd StudyPlannerFX && mvn javafx:run
 ```
 
 ### 🐧 Linux
-```bash
+```
 chmod +x install-linux.sh && ./install-linux.sh
 # Auto-detects apt (Ubuntu/Debian) or dnf (Fedora/RHEL). Sudo required.
 ```
 
 Manual — Ubuntu/Debian:
-```bash
+```
 sudo apt update && sudo apt install openjdk-21-jdk maven
 cd StudyPlannerFX && mvn javafx:run
 ```
 
 Manual — Fedora/RHEL:
-```bash
+```
 sudo dnf install java-21-openjdk-devel maven
 cd StudyPlannerFX && mvn javafx:run
 ```
@@ -74,7 +78,7 @@ cd StudyPlannerFX && mvn javafx:run
 ---
 
 ## Developer Commands
-```bash
+```
 # Run in dev mode (fastest)
 mvn javafx:run
 
@@ -96,7 +100,7 @@ chmod +x build-installer.sh && ./build-installer.sh
 Use `build-installer.sh / .bat` to produce a platform-native package with a bundled JRE.
 
 | Platform | Output | Install |
-|---|---|---|
+| --- | --- |
 | Windows | `.exe` installer | Double-click to install |
 | macOS | `.dmg` disk image | Open → drag to Applications |
 | Fedora / RHEL | `.rpm` package | `sudo dnf install *.rpm` |
@@ -109,7 +113,7 @@ Use `build-installer.sh / .bat` to produce a platform-native package with a bund
 All student data is saved locally as human-readable JSON. Nothing is ever sent to any server.
 
 | OS | Location |
-|---|---|
+| --- | --- |
 | Windows | `%USERPROFILE%\Documents\BRACUStudyPlanner\student_data.json` |
 | macOS | `~/Documents/BRACUStudyPlanner/student_data.json` |
 | Linux | `~/BRACUStudyPlanner/student_data.json` |
@@ -117,7 +121,6 @@ All student data is saved locally as human-readable JSON. Nothing is ever sent t
 ---
 
 ## Project Structure
-
 ```
 StudyPlannerFX/
 ├── install-windows.bat
@@ -153,8 +156,8 @@ StudyPlannerFX/
             ├── FormField.java
             ├── StatCard.java
             └── StatusBadge.java
-
 ```
+
 ---
 
 Built by [Ayanokouji](https://github.com/Darkus39) · Founder @ [Spectre Flow](https://spectre-flow-website.vercel.app) · CSE Undergrad Y2
