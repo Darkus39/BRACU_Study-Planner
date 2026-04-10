@@ -2,7 +2,7 @@
 
 ---
 
-# 🎓 BRACU Study Planner v2.0
+# 🎓 BRACU Study Planner
 
 > Academic management system for BRACU students — Java 21 · Spring Boot 3.2 · JavaFX 21
 
